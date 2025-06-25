@@ -10,7 +10,7 @@ const CommentForm = ({ onNewComment }: Props) => {
   const { register, handleSubmit, reset } = useForm<NewComment>();
 
   const onSubmit = async (data: NewComment) => {
-    await axios.post("/api/comments", data);
+    await axios.post("http://localhost:8000/comments", data);
     onNewComment();
     reset();
   };
