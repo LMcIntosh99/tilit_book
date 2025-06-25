@@ -12,7 +12,7 @@ const Home = () => {
       <img src={imageUrl || "/tilit_home.jpeg"} alt="Cat" width="300" />
       <UploadForm onUpload={setImageUrl} />
       <CommentForm onNewComment={() => window.location.reload()} />
-        <CommentList />
+      <CommentList />
     </div>
   );
 };

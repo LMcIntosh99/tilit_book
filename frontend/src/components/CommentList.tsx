@@ -6,9 +6,8 @@ const CommentList = () => {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
-  axios.get("/api/comments")
+  axios.get("http://localhost:8000/comments")
     .then(res => {
-      console.log("API response:", res.data);
       setComments(res.data);
     })
     .catch(err => {
@@ -22,7 +21,7 @@ const CommentList = () => {
       {Array.isArray(comments) ? comments.map((c) => (
   <div key={c.id}>
     <p>{c.text}</p>
-    <small>{c.location} – {new Date(c.createdAt).toLocaleString()}</small>
+    <small>{c.location} – {new Date(c.created_at).toLocaleString()}</small>
   </div>
 )) : <p>Loading comments...</p>}
     </div>

@@ -2,11 +2,11 @@ export interface Comment {
   id: string;
   text: string;
   location: string;
-  createdAt: string;
+  created_at: string;
 }
 
 export interface UploadResponse {
-  imageUrl: string;
+  image_url: string;
 }
 
 export interface NewComment {
