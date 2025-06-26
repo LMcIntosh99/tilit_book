@@ -4,11 +4,10 @@ from sqlalchemy.orm import Session
 from ..database import SessionLocal
 from .. import crud, schemas
 import uuid
+from ..utils.s3_tools import upload_image
 from ..utils.logger import logger
 
 router = APIRouter()
-
-BUCKET = "tilit-imgs"
 
 
 def get_db():
@@ -31,12 +30,11 @@ def create_comment(
         file: Optional[UploadFile] = File(None),
         db: Session = Depends(get_db)
 ):
-    logger.info("POST comments")
     image_url = None
 
     if file:
-        file_ext = file.filename.split(".")[-1]
-        key = f"cat-images/{uuid.uuid4()}.{file_ext}"
-        image_url = f"https://{BUCKET}.s3.amazonaws.com/{key}"
+        logger.info("uplad")
+        image_url = upload_image(file)
+
     logger.info(image_url)
     return crud.create_comment(db, schemas.CommentCreate(text=text, location=location, image_url=image_url), image_url)
