@@ -9,8 +9,3 @@ export interface Comment {
 export interface UploadResponse {
   image_url: string;
 }
-
-export interface NewComment {
-  text: string;
-  location: string;
-}

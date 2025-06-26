@@ -14,9 +14,7 @@ const CommentForm = () => {
   formData.append("text", text);
   formData.append("location", location);
   if (file) {
-    console.log("filee")
     formData.append("file", file);
-    console.log(file)
   }
 
   try {
@@ -27,8 +25,7 @@ const CommentForm = () => {
     // Reset form
     setText("");
     setLocation("");
-    setFile(null);
-    alert("Comment submitted!");
+    setFile(null); 
   } catch (err) {
     console.error(err);
     alert("Error submitting comment");

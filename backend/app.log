@@ -434,3 +434,10 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x89 in position 371: invali
 2025-06-26 14:26:12 | INFO | uvicorn.error | https://tilit-imgs.s3.amazonaws.com/cat-images/b45ed2da-c01e-4291-a5b4-ecfc7c74c5ca.PNG
 2025-06-26 14:27:11 | INFO | uvicorn.error | POST comments
 2025-06-26 14:27:11 | INFO | uvicorn.error | None
+2025-06-26 14:28:29 | INFO | uvicorn.error | Shutting down
+2025-06-26 14:28:29 | INFO | uvicorn.error | Waiting for application shutdown.
+2025-06-26 14:28:29 | INFO | uvicorn.error | Application shutdown complete.
+2025-06-26 14:28:29 | INFO | uvicorn.error | Finished server process [6740]
+2025-06-26 14:28:31 | INFO | uvicorn.error | Started server process [15512]
+2025-06-26 14:28:31 | INFO | uvicorn.error | Waiting for application startup.
+2025-06-26 14:28:31 | INFO | uvicorn.error | Application startup complete.
