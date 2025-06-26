@@ -1,12 +1,13 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
+from fastapi import UploadFile, File
 
 
 class CommentCreate(BaseModel):
     text: str
     location: str
-    image_url: Optional[str] = None
+    image_url: Optional[str]
 
 
 class Comment(BaseModel):

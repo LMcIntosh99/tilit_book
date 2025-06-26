@@ -6,8 +6,8 @@ def get_comments(db: Session):
     return db.query(models.Comment).order_by(models.Comment.created_at.desc()).all()
 
 
-def create_comment(db: Session, comment: schemas.CommentCreate):
-    db_comment = models.Comment(**comment.dict())
+def create_comment(db: Session, comment: schemas.CommentCreate, image_url: str):
+    db_comment = models.Comment(text=comment.text, location=comment.location, image_url=image_url)
     db.add(db_comment)
     db.commit()
     db.refresh(db_comment)

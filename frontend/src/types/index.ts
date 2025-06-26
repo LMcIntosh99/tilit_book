@@ -3,6 +3,7 @@ export interface Comment {
   text: string;
   location: string;
   created_at: string;
+  image_url: string;
 }
 
 export interface UploadResponse {
