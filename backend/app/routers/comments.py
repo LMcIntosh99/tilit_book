@@ -33,8 +33,6 @@ def create_comment(
     image_url = None
 
     if file:
-        logger.info("uplad")
         image_url = upload_image(file)
 
-    logger.info(image_url)
     return crud.create_comment(db, schemas.CommentCreate(text=text, location=location, image_url=image_url), image_url)

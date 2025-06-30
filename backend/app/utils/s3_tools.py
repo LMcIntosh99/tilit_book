@@ -14,11 +14,9 @@ BUCKET_NAME = os.getenv("AWS_S3_BUCKET_NAME")
 
 
 def upload_image(file):
-    logger.info(file.file)
     file_ext = file.filename.split(".")[-1]
     key = f"cat-images/{uuid.uuid4()}.{file_ext}"
-    logger.info(BUCKET_NAME, key, type(BUCKET_NAME), type(key))
-    s3.upload_fileobj(file.file, BUCKET_NAME, key)
+    s3.upload_fileobj(file.file, BUCKET_NAME, key, ExtraArgs={"ACL": "public-read", "ContentType": file.content_type})
 
     url = f"https://{BUCKET_NAME}.s3.amazonaws.com/{key}"
     return url
