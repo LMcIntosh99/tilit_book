@@ -7,7 +7,11 @@ def get_comments(db: Session):
 
 
 def create_comment(db: Session, comment: schemas.CommentCreate):
-    db_comment = models.Comment(text=comment.text, location=comment.location, image_url=comment.image_url)
+    db_comment = models.Comment(
+        text=comment.text,
+        location=comment.location,
+        image_url=comment.image_url
+    )
     db.add(db_comment)
     db.commit()
     db.refresh(db_comment)
