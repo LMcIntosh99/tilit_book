@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const CommentForm = () => {
+type CommentFormProps = {
+  onNewComment?: () => void;
+};
+
+const CommentForm = ({ onNewComment }: CommentFormProps) => {
   const [text, setText] = useState("");
   const [location, setLocation] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -26,6 +30,7 @@ const CommentForm = () => {
     setText("");
     setLocation("");
     setFile(null); 
+    onNewComment?.();
   } catch (err) {
     console.error(err);
     alert("Error submitting comment");

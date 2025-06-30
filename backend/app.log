@@ -1955,3 +1955,10 @@ LINE 1: INSERT INTO comments (text, location, image_url) VALUES ('Oh...
 2025-06-30 15:42:40 | INFO | uvicorn.error | Started server process [21492]
 2025-06-30 15:42:40 | INFO | uvicorn.error | Waiting for application startup.
 2025-06-30 15:42:40 | INFO | uvicorn.error | Application startup complete.
+2025-06-30 15:58:10 | INFO | uvicorn.error | Shutting down
+2025-06-30 15:58:10 | INFO | uvicorn.error | Waiting for application shutdown.
+2025-06-30 15:58:10 | INFO | uvicorn.error | Application shutdown complete.
+2025-06-30 15:58:10 | INFO | uvicorn.error | Finished server process [21492]
+2025-06-30 15:59:13 | INFO | uvicorn.error | Started server process [1868]
+2025-06-30 15:59:13 | INFO | uvicorn.error | Waiting for application startup.
+2025-06-30 15:59:13 | INFO | uvicorn.error | Application startup complete.
