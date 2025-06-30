@@ -1,11 +1,9 @@
-from fastapi import APIRouter, Depends, Form, File, UploadFile
 from typing import Optional
+from fastapi import APIRouter, Depends, Form, File, UploadFile
 from sqlalchemy.orm import Session
 from ..database import SessionLocal
 from .. import crud, schemas
-import uuid
 from ..utils.s3_tools import upload_image
-from ..utils.logger import logger
 
 router = APIRouter()
 
@@ -35,4 +33,7 @@ def create_comment(
     if file:
         image_url = upload_image(file)
 
-    return crud.create_comment(db, schemas.CommentCreate(text=text, location=location, image_url=image_url), image_url)
+    return crud.create_comment(
+        db,
+        schemas.CommentCreate(text=text, location=location, image_url=image_url)
+    )
