@@ -1,3 +1,10 @@
+"""
+Logging configuration module.
+
+Sets up a logger inheriting from Uvicorn's error logger, configures log level,
+and optionally adds custom formatting and file logging.
+"""
+
 import logging
 
 # Create logger
@@ -9,7 +16,7 @@ formatter = logging.Formatter(
     "%(asctime)s | %(levelname)s | %(name)s | %(message)s", "%Y-%m-%d %H:%M:%S"
 )
 
-# Optional: Log to a file
+# Log to a file
 file_handler = logging.FileHandler("app.log")
 file_handler.setFormatter(formatter)
 
