@@ -6,3 +6,4 @@
 - Display uploaded images
 - Refresh page after upload
 - Docker
+- Use transactions in backend
