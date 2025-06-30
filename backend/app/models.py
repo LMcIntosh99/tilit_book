@@ -8,4 +8,4 @@ class Comment(Base):
     text = Column(String)
     location = Column(String)
     created_at = Column(DateTime, server_default=func.now())
-    image_url = Column(String, nullable=True)
+    image_key = Column(String, nullable=True)
