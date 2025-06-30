@@ -22,13 +22,6 @@ const CommentList = () => {
   <div key={c.id}>
     <p>{c.text}</p>
     <small>{c.location} – {new Date(c.created_at).toLocaleString()}</small>
-    {c.image_url && (
-        <img
-          src={c.image_url}
-          alt="Cat"
-          className="w-full max-w-xs rounded-lg mt-2"
-        />
-      )}
   </div>
 )) : <p>Loading comments...</p>}
     </div>

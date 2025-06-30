@@ -30,10 +30,11 @@ def create_comment(
         file: Optional[UploadFile] = File(None),
         db: Session = Depends(get_db)
 ):
-    image_key = None
+    image_url = None
 
     if file:
-        image_key = upload_image(file)
+        logger.info("uplad")
+        image_url = upload_image(file)
 
-    logger.info(image_key)
-    return crud.create_comment(db, schemas.CommentCreate(text=text, location=location, image_key=image_key))
+    logger.info(image_url)
+    return crud.create_comment(db, schemas.CommentCreate(text=text, location=location, image_url=image_url), image_url)

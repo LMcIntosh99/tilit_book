@@ -17,6 +17,8 @@ def upload_image(file):
     logger.info(file.file)
     file_ext = file.filename.split(".")[-1]
     key = f"cat-images/{uuid.uuid4()}.{file_ext}"
+    logger.info(BUCKET_NAME, key, type(BUCKET_NAME), type(key))
     s3.upload_fileobj(file.file, BUCKET_NAME, key)
 
-    return key
+    url = f"https://{BUCKET_NAME}.s3.amazonaws.com/{key}"
+    return url
