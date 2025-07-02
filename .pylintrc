@@ -1,2 +1,5 @@
+[MASTER]
+ignore=alembic,tests
+
 [MESSAGES CONTROL]
 disable=R0903,E0401,E1102
