@@ -13,19 +13,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 
 DB_URL = URL.create(
     "postgresql",
-    username=DB_USER,
-    password=DB_PASSWORD,
+    username=POSTGRES_USER,
+    password=POSTGRES_PASSWORD,
     host=DB_HOST,
     port=DB_PORT,
-    database=DB_NAME,
+    database=POSTGRES_DB,
 )
 
 engine = create_engine(DB_URL)
