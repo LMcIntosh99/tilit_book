@@ -10,12 +10,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import comments
 from . import models
-from .database import engine
-
-# Create all tables defined by the ORM models (if they don't exist)
-models.Base.metadata.create_all(bind=engine)
+from .database import get_engine
 
 app = FastAPI()
+
+
+# Create all tables on startup defined by the ORM models (if they don't exist)
+@app.on_event("startup")
+def on_startup():
+    models.Base.metadata.create_all(bind=get_engine())
+
 
 # Configure CORS to allow frontend requests from localhost:5173
 app.add_middleware(
