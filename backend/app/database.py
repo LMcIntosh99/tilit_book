@@ -13,21 +13,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE = os.getenv("DATABASE")
+DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
 
-DATABASE_URL = URL.create(
+DB_URL = URL.create(
     "postgresql",
     username=DB_USER,
     password=DB_PASSWORD,
-    host="localhost",
-    port=5432,
-    database=DATABASE,
+    host=DB_HOST,
+    port=DB_PORT,
+    database=DB_NAME,
 )
 
-engine = create_engine(DATABASE_URL)
-os.environ["DATABASE_URL"] = engine.url.render_as_string(hide_password=False)
+engine = create_engine(DB_URL)
+os.environ["DB_URL"] = engine.url.render_as_string(hide_password=False)
 SessionLocal = sessionmaker(bind=engine)
 
 # Base class for declarative ORM models to inherit from
