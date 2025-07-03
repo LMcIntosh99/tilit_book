@@ -5,6 +5,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from ..database import Base
+from .. import models
 from .. import database as db_module
 
 
@@ -20,6 +21,7 @@ def db_engine():
     Base.metadata.create_all(bind=engine)
     return engine
 
+
 @pytest.fixture(scope="function")
 def db_session(db_engine):
     SessionTesting = sessionmaker(bind=db_engine)
@@ -28,6 +30,7 @@ def db_session(db_engine):
         yield db
     finally:
         db.close()
+
 
 @pytest.fixture(scope="function")
 def client(db_session):

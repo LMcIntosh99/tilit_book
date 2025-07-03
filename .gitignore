@@ -2,3 +2,4 @@
 .idea
 .vs
 requirements_dev.txt
+*.pyc
