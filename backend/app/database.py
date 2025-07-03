@@ -21,7 +21,14 @@ DB_PORT = os.getenv("DB_PORT")
 
 
 def get_engine():
-    DB_URL = URL.create(
+    """
+    Create and return a SQLAlchemy engine using PostgreSQL credentials
+    from environment variables. Also sets the DB_URL in the environment.
+
+    Returns:
+        Engine: SQLAlchemy engine connected to the specified PostgreSQL database.
+    """
+    db_url = URL.create(
         "postgresql",
         username=POSTGRES_USER,
         password=POSTGRES_PASSWORD,
@@ -30,9 +37,8 @@ def get_engine():
         database=POSTGRES_DB,
     )
 
-    engine = create_engine(DB_URL)
+    engine = create_engine(db_url)
     os.environ["DB_URL"] = engine.url.render_as_string(hide_password=False)
-
     return engine
 
 

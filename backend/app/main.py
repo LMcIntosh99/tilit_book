@@ -15,9 +15,12 @@ from .database import get_engine
 app = FastAPI()
 
 
-# Create all tables on startup defined by the ORM models (if they don't exist)
 @app.on_event("startup")
 def on_startup():
+    """
+    Create table on startup defined by the ORM models (if they don't exist)
+
+    """
     models.Base.metadata.create_all(bind=get_engine())
 
 
