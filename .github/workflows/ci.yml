@@ -51,4 +51,4 @@ jobs:
       - name: Run tests
         run: |
           cd backend
-          pytest app/tests/test_crud.py -v --cov=app --cov-report=term-missing
+          pytest app/tests/test_crud.py app/tests/test_comments_integration.py -v --cov=app --cov-report=term-missing
