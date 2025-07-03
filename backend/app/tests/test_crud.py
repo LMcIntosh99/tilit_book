@@ -69,21 +69,31 @@ def test_get_comments_single(db_session):
     assert comments[0].location == "Single location"
 
 
-def test_create_comment_persists_in_database(db_session):
-    """Test that created comments are actually persisted in the database."""
-    comment_data = CommentCreate(
-        text="Persistent comment",
-        location="Persistent location",
-        image_url="https://example.com/persistent.jpg"
+def test_get_comments_multiple_ordered_by_date(db_session):
+    """Test creating and getting multiple comments."""
+    from datetime import datetime, timedelta
+
+    # Create first comment with an earlier timestamp
+    comment1_data = CommentCreate(
+        text="First comment",
+        location="Location 1",
+        image_url=None
     )
+    crud.create_comment(db_session, comment1_data)
 
-    created_comment = crud.create_comment(db_session, comment_data)
-    comment_id = created_comment.id
+    # Create second comment with a later timestamp
+    comment2_data = CommentCreate(
+        text="Second comment",
+        location="Location 2",
+        image_url=None
+    )
+    crud.create_comment(db_session, comment2_data)
 
-    # Query the database directly to verify persistence
-    db_comment = db_session.query(Comment).filter(Comment.id == comment_id).first()
+    comments = crud.get_comments(db_session)
 
-    assert db_comment is not None
-    assert db_comment.text == "Persistent comment"
-    assert db_comment.location == "Persistent location"
-    assert db_comment.image_url == "https://example.com/persistent.jpg"
+    assert len(comments) == 2
+    # Most recent comment should be first (ordered by created_at desc)
+    assert comments[0].text == "Second comment"
+    assert comments[1].text == "First comment"
+    # Verify the ordering by comparing timestamps
+    assert comments[0].created_at > comments[1].created_at
