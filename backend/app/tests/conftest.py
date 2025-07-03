@@ -7,7 +7,8 @@ from sqlalchemy.orm import sessionmaker
 from ..database import Base
 from .. import models
 from .. import database as db_module
-
+from ..schemas import CommentCreate
+from .. import crud
 
 @pytest.fixture(scope="session")
 def db_engine():

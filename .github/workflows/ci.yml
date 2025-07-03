@@ -50,4 +50,5 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          cd backend
+          pytest app/tests/*.py -v
