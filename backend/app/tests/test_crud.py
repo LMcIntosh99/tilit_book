@@ -97,3 +97,18 @@ def test_get_comments_multiple_ordered_by_date(db_session):
     assert comments[1].text == "First comment"
     # Verify the ordering by comparing timestamps
     assert comments[0].created_at > comments[1].created_at
+
+
+def test_create_comment_with_special_characters(db_session):
+    """Test creating a comment with special characters."""
+    comment_data = CommentCreate(
+        text="Comment with special chars: !@#$%^&*()_+{}|:<>?[]\\;'\",./ àáâãäåæçèéêë",
+        location="Location with émojis 🎉🎊",
+        image_url=None
+    )
+
+    created_comment = crud.create_comment(db_session, comment_data)
+
+    assert created_comment.text == "Comment with special chars: !@#$%^&*()_+{}|:<>?[]\\;'\",./ àáâãäåæçèéêë"
+    assert created_comment.location == "Location with émojis 🎉🎊"
+
