@@ -23,13 +23,13 @@ A little "pet" project web application where users can view, comment, and upload
 - **Docker** and **Docker Compose** for containerization
 - **Alembic** for database migrations
 
-## 📋 Prerequisites
+## Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
 - [Node.js](https://nodejs.org/) (if running frontend locally)
 - [Python 3.10+](https://www.python.org/downloads/) (if running backend locally)
 
-## 🛠️ Quick Start
+## Quick Start
 
 1. **Clone the repository**
    ```bash
